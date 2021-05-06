@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --baseHref=https://dineeek.github.io/pesticide-calculator/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng deploy --base-href=pesticide-calculator"
+    "deploy": "ng deploy --base-href=https://dineeek.github.io/pesticide-calculator/"
   },
   "private": true,
   "dependencies": {
