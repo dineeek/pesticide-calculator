@@ -1,0 +1,17 @@
+.buttons {
+  padding: 1em 0;
+
+  .reset {
+    margin-left: 10px;
+  }
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-column-gap: 15px;
+}
+
+p.border {
+  border: 1px solid;
+}

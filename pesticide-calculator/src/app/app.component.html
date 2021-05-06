@@ -1,2 +1,79 @@
 <h1>Pesticide calculator</h1>
-<div>TBD</div>
+<div class="buttons">
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    (click)="addHerbicide()"
+  >
+    Add Item
+  </button>
+  <button
+    class="reset"
+    mat-raised-button
+    color="warn"
+    type="button"
+    (click)="resetHerbicides()"
+  >
+    Reset
+  </button>
+</div>
+
+<form [formGroup]="form">
+  <div
+    formArrayName="herbicides"
+    *ngFor="let control of herbicides.controls; index as i"
+  >
+    <div [formGroupName]="i" class="fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Herbicide name</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="herbicide"
+          placeholder="Ex. Nordox"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Default dosage</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="dosage"
+          placeholder="20 dg/L"
+        />
+        <mat-error *ngIf="control.get('dosage')?.hasError('required')">
+          Please enter default dosage!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Number of dosage</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="userLiters"
+          placeholder="20 kg or 10L"
+        />
+        <mat-error *ngIf="control.get('userLiters')?.hasError('required')">
+          Please enter your number of liters/kilos!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Result</mat-label>
+        <input type="text" matInput formControlName="dosageResult" />
+      </mat-form-field>
+    </div>
+    <p class="border"></p>
+  </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    (click)="addHerbicide()"
+  >
+    Calculate
+  </button>
+</form>
