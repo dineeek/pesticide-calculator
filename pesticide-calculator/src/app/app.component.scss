@@ -9,9 +9,13 @@
 .fields {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  grid-column-gap: 15px;
+  grid-column-gap: 10px;
 }
 
 p.border {
   border: 1px solid;
+}
+
+.calculation {
+  float: right;
 }
