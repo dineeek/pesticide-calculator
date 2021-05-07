@@ -63,6 +63,7 @@
         matInput
         formControlName="userVolume"
         placeholder="Ex. 10"
+        mask="9999999"
       />
       <mat-error *ngIf="herb.get('userVolume')?.hasError('required')">
         Please enter desired volume!
