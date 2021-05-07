@@ -19,7 +19,7 @@
   </button>
 </div>
 
-<ng-container *ngFor="let herb of herbFormGroups">
+<ng-container *ngFor="let herb of herbFormGroups; index as i">
   <form [formGroup]="herb" class="fields">
     <mat-form-field appearance="outline">
       <mat-label>Herbicide name</mat-label>
@@ -46,7 +46,10 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Dosage unit</mat-label>
-      <mat-select formControlName="dosageUnit">
+      <mat-select
+        formControlName="dosageUnit"
+        (selectionChange)="onDosageUnitChange(herb.get('dosageUnit')?.value, i)"
+      >
         <mat-option *ngFor="let unit of dosageUnits" [value]="unit">{{
           unit
         }}</mat-option>
@@ -73,7 +76,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Volume unit</mat-label>
       <mat-select formControlName="userVolumeUnit">
-        <mat-option *ngFor="let unit of userVolumeUnits" [value]="unit">{{
+        <mat-option *ngFor="let unit of userVolumeUnits[i]" [value]="unit">{{
           unit
         }}</mat-option>
       </mat-select>

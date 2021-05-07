@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   herbicides: FormArray = new FormArray([]);
 
   dosageUnits = DOSAGE_UNITS;
-  userVolumeUnits: string[] = [];
+  userVolumeUnits: { [key: number]: string[] } = {};
 
   constructor(private fb: FormBuilder) {}
 
@@ -22,16 +22,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.addHerbicide();
-
-    this.herbFormGroups.forEach((formGroup: FormGroup) => {
-      getFormControl(formGroup, 'dosageUnit').valueChanges.subscribe(
-        (value: string) => (this.userVolumeUnits = value.split('/'))
-      );
-    });
   }
 
   addHerbicide(): void {
     this.herbicides.push(this.createHerbicide());
+  }
+
+  onDosageUnitChange(unit: string, index: number): void {
+    this.userVolumeUnits[index] = unit.split('/');
   }
 
   resetHerbicides(): void {

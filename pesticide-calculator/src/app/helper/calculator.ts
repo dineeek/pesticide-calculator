@@ -10,6 +10,8 @@ export function calculate(formGroup: FormGroup): void {
     'dosageUnit'
   ).value.split('/');
 
+  console.log(ratio);
+
   const userUnitInput = getFormControl(formGroup, 'userVolumeUnit').value;
 
   const recommendedDosage = Number(ratio[0]) / Number(ratio[1]);
@@ -43,7 +45,7 @@ export function getFormControl(
 export function setFormControlValue(
   form: FormGroup,
   controlName: string,
-  value: string
+  value: any
 ): void {
   return form.get(controlName)?.setValue(value);
 }
