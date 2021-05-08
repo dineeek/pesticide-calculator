@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
 
   resetHerbicides(): void {
     this.herbicides.clear();
+    this.userVolumeUnits = {};
     this.addHerbicide();
   }
 

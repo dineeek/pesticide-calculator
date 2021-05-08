@@ -1,5 +1,5 @@
 <h1>Pesticide calculator</h1>
-<h3>Calculate the needed dosage of the herbicide for your volume</h3>
+<h3>Calculate the needed dosage of the herbicide or water for your volume!</h3>
 <button
   class="newHerb"
   mat-raised-button
@@ -39,7 +39,7 @@
           herb.get('recommendedRate')?.hasError('validRatioVolume')
         "
       >
-        Enter ratio as for ex. 50/100
+        Enter ratio as ex. 50/100
       </mat-error>
     </mat-form-field>
 
@@ -91,7 +91,9 @@
       <input type="text" matInput formControlName="dosageResult" readonly />
     </mat-form-field>
   </form>
-  <p [class.border]="herbFormGroups.length > 1"></p>
+  <p
+    [class.border]="herbFormGroups.length > 1 && i < herbFormGroups.length - 1"
+  ></p>
 </ng-container>
 
 <button

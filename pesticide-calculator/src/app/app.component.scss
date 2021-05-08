@@ -16,3 +16,15 @@ p.border {
   border: 1px solid;
   border-style: ridge;
 }
+
+@media screen and (max-width: 1050px) {
+  .fields {
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .fields {
+    grid-template-columns: none;
+  }
+}
