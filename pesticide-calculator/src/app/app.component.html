@@ -23,7 +23,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Recommended rate of application</mat-label>
+      <mat-label>Rate of application</mat-label>
       <input
         type="text"
         matInput
@@ -31,12 +31,20 @@
         placeholder="Ex. 20/100"
       />
       <mat-error *ngIf="herb.get('recommendedRate')?.hasError('required')">
-        Please enter dosage ratio!
+        Enter dosage ratio!
+      </mat-error>
+      <mat-error
+        *ngIf="
+          !herb.get('recommendedRate')?.hasError('required') &&
+          herb.get('recommendedRate')?.hasError('validRatioVolume')
+        "
+      >
+        Enter ratio as for ex. 50/100
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Recommended dosage unit</mat-label>
+      <mat-label>Dosage unit</mat-label>
       <mat-select
         formControlName="recommendedUnit"
         (selectionChange)="
@@ -48,12 +56,12 @@
         }}</mat-option>
       </mat-select>
       <mat-error *ngIf="herb.get('recommendedUnit')?.hasError('required')">
-        Please enter dosage unit!
+        Enter dosage unit!
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Your volume of herbicide or water</mat-label>
+      <mat-label>Your volume</mat-label>
       <input
         type="text"
         matInput
@@ -62,7 +70,7 @@
         mask="9999999"
       />
       <mat-error *ngIf="herb.get('userVolume')?.hasError('required')">
-        Please enter desired volume!
+        Enter desired volume!
       </mat-error>
     </mat-form-field>
 
@@ -74,7 +82,7 @@
         }}</mat-option>
       </mat-select>
       <mat-error *ngIf="herb.get('userVolumeUnit')?.hasError('required')">
-        Please enter dosage unit!
+        Enter dosage unit!
       </mat-error>
     </mat-form-field>
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { calculate, getFormControl } from './helper/calculator';
+import { calculate } from './helper/calculator';
 import { DOSAGE_UNITS } from './helper/constants';
+import { volumeRatioValidator } from './helper/volume-ratio-validator';
 
 @Component({
   selector: 'app-root',
@@ -48,7 +49,7 @@ export class AppComponent implements OnInit {
   private createHerbicide(): FormGroup {
     return this.fb.group({
       herbicideName: [''],
-      recommendedRate: ['', [Validators.required]],
+      recommendedRate: ['', [Validators.required, volumeRatioValidator]],
       recommendedUnit: ['', [Validators.required]],
       userVolume: ['', [Validators.required]],
       userVolumeUnit: ['', [Validators.required]],
