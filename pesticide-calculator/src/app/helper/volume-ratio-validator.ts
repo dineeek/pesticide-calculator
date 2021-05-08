@@ -12,9 +12,3 @@ export function volumeRatioValidator(
     !isNaN(Number(ratioValues[1]));
   return areValidRations ? null : { validRatioVolume: true };
 }
-
-export function selectValidator(
-  control: AbstractControl
-): { [key: string]: boolean } | null {
-  return control.value ? null : { invalidSelection: true };
-}

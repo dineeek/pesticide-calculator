@@ -42,7 +42,7 @@
           }}</mat-option>
         </mat-select>
         <mat-error *ngIf="herb.get('recommendedRate')?.hasError('required')">
-          Enter dosage ratio!
+          Enter dosage ratio and unit measure!
         </mat-error>
         <mat-error
           *ngIf="
@@ -51,9 +51,6 @@
           "
         >
           Enter ratio as ex. 50/100
-        </mat-error>
-        <mat-error *ngIf="herb.get('recommendedUnit')?.hasError('required')">
-          Enter dosage unit!
         </mat-error>
       </mat-form-field>
     </div>
@@ -66,7 +63,6 @@
           matInput
           formControlName="userVolume"
           placeholder="Ex. 10"
-          mask="9999999"
         />
         <mat-select formControlName="userVolumeUnit">
           <mat-option *ngFor="let unit of userVolumeUnits[i]" [value]="unit">{{
@@ -74,10 +70,7 @@
           }}</mat-option>
         </mat-select>
         <mat-error *ngIf="herb.get('userVolume')?.hasError('required')">
-          Enter desired volume!
-        </mat-error>
-        <mat-error *ngIf="herb.get('userVolumeUnit')?.hasError('required')">
-          Enter dosage unit!
+          Enter desired volume and unit measure!
         </mat-error>
       </mat-form-field>
     </div>

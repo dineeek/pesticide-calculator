@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { calculate } from './helper/calculator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { calculate, setFormControlValue } from './helper/calculator';
 import { DOSAGE_UNITS } from './helper/constants';
 import { volumeRatioValidator } from './helper/volume-ratio-validator';
 
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
   dosageUnits = DOSAGE_UNITS;
   userVolumeUnits: { [key: number]: string[] } = {};
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private snackbar: MatSnackBar) {}
 
   get herbFormGroups(): FormGroup[] {
     return this.herbicides.controls as FormGroup[];
@@ -44,6 +45,12 @@ export class AppComponent implements OnInit {
     this.herbFormGroups.forEach((formGroup: FormGroup) => {
       if (formGroup.valid) {
         calculate(formGroup);
+      } else {
+        setFormControlValue(
+          formGroup,
+          'dosageResult',
+          `Some values are missing for calculation!`
+        );
       }
     });
   }
