@@ -47,9 +47,9 @@ export class AppComponent implements OnInit {
 
   private createHerbicide(): FormGroup {
     return this.fb.group({
-      herbicide: [''],
-      dosageVolume: ['', [Validators.required]],
-      dosageUnit: ['', [Validators.required]],
+      herbicideName: [''],
+      recommendedRate: ['', [Validators.required]],
+      recommendedUnit: ['', [Validators.required]],
       userVolume: ['', [Validators.required]],
       userVolumeUnit: ['', [Validators.required]],
       dosageResult: [''],

@@ -1,13 +1,14 @@
 import { FormGroup, FormControl } from '@angular/forms';
 
 export function calculate(formGroup: FormGroup): void {
-  const ratio: string = getFormControl(formGroup, 'dosageVolume').value.split(
-    '/'
-  );
+  const ratio: string = getFormControl(
+    formGroup,
+    'recommendedRate'
+  ).value.split('/');
 
   const ratioUnits: string = getFormControl(
     formGroup,
-    'dosageUnit'
+    'recommendedUnit'
   ).value.split('/');
 
   console.log(ratio);

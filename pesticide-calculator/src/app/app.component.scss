@@ -1,9 +1,5 @@
-.buttons {
-  padding: 1em 0;
-
-  .reset {
-    margin-left: 10px;
-  }
+.newHerb {
+  margin: 15px 0;
 }
 
 .fields {
@@ -12,10 +8,11 @@
   grid-column-gap: 10px;
 }
 
-p.border {
-  border: 1px solid;
+.calculate {
+  float: right;
 }
 
-.calculation {
-  float: right;
+p.border {
+  border: 1px solid;
+  border-style: ridge;
 }

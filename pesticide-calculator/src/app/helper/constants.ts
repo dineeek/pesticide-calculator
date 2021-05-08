@@ -6,4 +6,5 @@ export const DOSAGE_UNITS = [
   'mL/dcL',
   'mL/L',
   'mL/hL',
+  'L/hL',
 ];

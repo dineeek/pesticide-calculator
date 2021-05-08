@@ -1,23 +1,14 @@
 <h1>Pesticide calculator</h1>
-<div class="buttons">
-  <button
-    mat-raised-button
-    color="primary"
-    type="button"
-    (click)="addHerbicide()"
-  >
-    Add Item
-  </button>
-  <button
-    class="reset"
-    mat-raised-button
-    color="warn"
-    type="button"
-    (click)="resetHerbicides()"
-  >
-    Reset
-  </button>
-</div>
+<h3>Calculate the needed dosage of the herbicide for your volume</h3>
+<button
+  class="newHerb"
+  mat-raised-button
+  color="primary"
+  type="button"
+  (click)="addHerbicide()"
+>
+  Add Herbicide
+</button>
 
 <ng-container *ngFor="let herb of herbFormGroups; index as i">
   <form [formGroup]="herb" class="fields">
@@ -26,41 +17,43 @@
       <input
         type="text"
         matInput
-        formControlName="herbicide"
+        formControlName="herbicideName"
         placeholder="Ex. Nordox"
       />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Default dosage</mat-label>
+      <mat-label>Recommended rate of application</mat-label>
       <input
         type="text"
         matInput
-        formControlName="dosageVolume"
+        formControlName="recommendedRate"
         placeholder="Ex. 20/100"
       />
-      <mat-error *ngIf="herb.get('dosageVolume')?.hasError('required')">
+      <mat-error *ngIf="herb.get('recommendedRate')?.hasError('required')">
         Please enter dosage ratio!
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Dosage unit</mat-label>
+      <mat-label>Recommended dosage unit</mat-label>
       <mat-select
-        formControlName="dosageUnit"
-        (selectionChange)="onDosageUnitChange(herb.get('dosageUnit')?.value, i)"
+        formControlName="recommendedUnit"
+        (selectionChange)="
+          onDosageUnitChange(herb.get('recommendedUnit')?.value, i)
+        "
       >
         <mat-option *ngFor="let unit of dosageUnits" [value]="unit">{{
           unit
         }}</mat-option>
       </mat-select>
-      <mat-error *ngIf="herb.get('dosageUnit')?.hasError('required')">
+      <mat-error *ngIf="herb.get('recommendedUnit')?.hasError('required')">
         Please enter dosage unit!
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Desired volume</mat-label>
+      <mat-label>Your volume of herbicide or water</mat-label>
       <input
         type="text"
         matInput
@@ -74,7 +67,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Volume unit</mat-label>
+      <mat-label>Your volume unit</mat-label>
       <mat-select formControlName="userVolumeUnit">
         <mat-option *ngFor="let unit of userVolumeUnits[i]" [value]="unit">{{
           unit
@@ -90,16 +83,23 @@
       <input type="text" matInput formControlName="dosageResult" readonly />
     </mat-form-field>
   </form>
-  <p class="border"></p>
+  <p [class.border]="herbFormGroups.length > 1"></p>
 </ng-container>
 
-<div class="calculation">
-  <button
-    mat-raised-button
-    color="primary"
-    type="button"
-    (click)="calculateDosage()"
-  >
-    Calculate
-  </button>
-</div>
+<button
+  mat-raised-button
+  color="warn"
+  type="button"
+  (click)="resetHerbicides()"
+>
+  Reset
+</button>
+<button
+  class="calculate"
+  mat-raised-button
+  color="primary"
+  type="button"
+  (click)="calculateDosage()"
+>
+  Calculate
+</button>

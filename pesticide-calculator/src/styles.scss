@@ -6,10 +6,19 @@ body {
   overflow-x: hidden;
 }
 body {
-  margin: 2.5em 5em;
+  margin: 2.5vw 5vw;
+}
+
+* {
   font-family: monospace;
 }
 
 .mat-form-field-wrapper {
   padding: 0 !important;
+}
+
+@media screen and (max-width: 400px) {
+  body {
+    margin: 5vw;
+  }
 }
