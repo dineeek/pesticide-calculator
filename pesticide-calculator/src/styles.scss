@@ -17,6 +17,10 @@ body {
   padding: 0 !important;
 }
 
+.mat-form-field {
+  width: 100%;
+}
+
 @media screen and (max-width: 400px) {
   body {
     margin: 5vw;

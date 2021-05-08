@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { calculate } from './helper/calculator';
 import { DOSAGE_UNITS } from './helper/constants';
@@ -8,6 +8,7 @@ import { volumeRatioValidator } from './helper/volume-ratio-validator';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit {
   herbicides: FormArray = new FormArray([]);
