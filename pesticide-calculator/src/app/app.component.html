@@ -22,7 +22,7 @@
       />
     </mat-form-field>
 
-    <div class="ratioVolumeUnit">
+    <div class="mergedField">
       <mat-form-field appearance="outline">
         <mat-label>Rate of application</mat-label>
         <input
@@ -32,6 +32,7 @@
           placeholder="Ex. 20/100"
         />
         <mat-select
+          class="selectField"
           formControlName="recommendedUnit"
           (selectionChange)="
             onDosageUnitChange(herb.get('recommendedUnit')?.value, i)
@@ -55,7 +56,7 @@
       </mat-form-field>
     </div>
 
-    <div class="ratioVolumeUnit">
+    <div class="mergedField">
       <mat-form-field appearance="outline">
         <mat-label>Your volume</mat-label>
         <input
@@ -64,7 +65,7 @@
           formControlName="userVolume"
           placeholder="Ex. 10"
         />
-        <mat-select formControlName="userVolumeUnit">
+        <mat-select formControlName="userVolumeUnit" class="selectField">
           <mat-option *ngFor="let unit of userVolumeUnits[i]" [value]="unit">{{
             unit
           }}</mat-option>

@@ -2,14 +2,18 @@
   margin-bottom: 15px !important;
 }
 
-.ratioVolumeUnit .mat-form-field-infix {
-  display: inherit;
+.mergedField .mat-form-field-infix {
+  display: flex;
 }
 
 .fields {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-column-gap: 10px;
+
+  .selectField {
+    width: 65%;
+  }
 }
 
 .calculate {
